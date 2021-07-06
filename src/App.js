@@ -9,7 +9,7 @@ import {
 // const Parent = Obj.Parent;
 // const Child = Obj.Child;
 // array data
-let data = [
+const data = [
   {
     firstName: 'Aleksey',
     lastName: 'Salkov',
