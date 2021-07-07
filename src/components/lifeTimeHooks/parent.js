@@ -2,7 +2,7 @@ import {Component} from 'react';
 // utils
 import { filterPropsData } from './utils';
 
-function renderChildItems (data) {
+function renderChildItems (data) {    
   return filterPropsData(data).map((item, i) => {
     return <p key={i}>{item.firstName} {item.lastName}</p>;
   });
