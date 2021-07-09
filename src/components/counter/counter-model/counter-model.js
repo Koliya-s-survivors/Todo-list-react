@@ -16,24 +16,16 @@ export default class CounterModel extends Component {
   };
 
   render() {
-    // const childrenWithExtraProp = React.Children.map(this.props.children, child => {
-    //   return React.cloneElement(child, {
-    //     counter: this.state.counter,
-    //     increment: this.increment,
-    //     decrement: this.decrement,
-    //   });
-    // });
-    // console.log('childrenWithExtraProp', childrenWithExtraProp);
-
     return(
-
-      {{
-        counter: this.props.counter,
-        increment: this.increment,
-        decrement: this.decrement,
-      }}
+      <>
+        {this.props.children({
+          counter: this.state.counter,
+          increment: this.increment,
+          decrement: this.decrement,
+        }
+        )}
+      </>
     )
-
   }
 }
 

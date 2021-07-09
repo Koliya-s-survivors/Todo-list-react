@@ -7,7 +7,7 @@ class Counter extends Component {
   render() {
     return (
         <CounterModel>
-          <CounterView/>
+          {(propsObj) => <CounterView propsObj={propsObj}/>}
         </CounterModel>
     );
   }

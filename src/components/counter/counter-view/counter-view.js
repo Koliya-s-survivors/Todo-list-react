@@ -3,8 +3,8 @@ import {Component} from 'react';
 
 class CounterView extends Component {
   render() {
-    const { counter, increment, decrement } = this.props.children;
-    console.log('this.props.children', this.props.children);
+    const { counter, increment, decrement } = this.props.propsObj;
+    console.log('this.props', this.props);
     return (
       <>
         <p>{counter}</p>
