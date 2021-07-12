@@ -14,62 +14,70 @@ var obj2 = {
   name: 'igor',
 };
 
+/** function getObjKeysName gets object keys
+ *
+ * @name getObjKeysName
+ *
+ * @param obj, ({key1: value1, key2: value2, ...}).  *
+ * @return 'Array'.
+ */
+
+function getObjKeysName (obj) {
+  return  Object.keys(obj);
+}
+
 /** function objValidation object type validation
-  *
-  * @name objValidation
-  *
-  * @param obj, ({key1: value1, key2: value2, ...}).  * 
-  * @return 'boolean'.
-  */
+ *
+ * @name objValidation
+ *
+ * @param obj, ({key1: value1, key2: value2, ...}).  *
+ * @return 'boolean'.
+ */
 
 function objValidation(obj) {
   if (!(obj instanceof Object)) {
     throw new Error('Type of input parameter is not an object');
   }
 
-  if (obj !== obj) {
-    throw new Error('Input parameter is NULL');
-  }
-
   return true;
 }
 
 /** function getObjSize return obj length
-  *
-  * @name getObjSize
-  *
-  * @param obj, ({key1: value1, key2: value2, ...}). 
-  * @return  'number'.
-  */
+ *
+ * @name getObjSize
+ *
+ * @param obj, ({key1: value1, key2: value2, ...}).
+ * @return  'number'.
+ */
 
 function getObjSize(obj) {
   try {
-    objValidation(obj);     
+    objValidation(obj);
 
-    const objLength = Object.keys(obj).length;    
+    const objLength = Object.keys(obj).length;
 
-    return objLength;    
+    return objLength;
   } catch (error) {
     console.log('Error from getObjSize function :', error.message);
   }
 };
 
 /** function compareObjKeys perform object keys comparition
-  *
-  * @name compareObjKeys
-  *
-  * @param obj1, ({key1: value1, key2: value2, ...}).
-  * @param obj2, ({key1: value1, key2: value2, ...}).
-  * @return  'boolean'.
-  */
+ *
+ * @name compareObjKeys
+ *
+ * @param obj1, ({key1: value1, key2: value2, ...}).
+ * @param obj2, ({key1: value1, key2: value2, ...}).
+ * @return  'boolean'.
+ */
 
 function compareObjKeys(obj1, obj2) {
   try {
     objValidation(obj1);
     objValidation(obj2);
 
-    const keysArr1 = Object.keys(obj1);
-    const keysArr2 = Object.keys(obj2);
+    const keysArr1 = getObjKeysName(obj1);
+    const keysArr2 = getObjKeysName(obj2);
 
     for (let i = 0; i < keysArr1.length; i++) {
       const keyFromArr2 = keysArr2.find(item => item === keysArr1[i])
@@ -86,21 +94,21 @@ function compareObjKeys(obj1, obj2) {
 }
 
 /** function objsValueComparition objects value comparition
-  *
-  * @name objsValueComparition
-  *
-  * @param obj1, ({key1: value1, key2: value2, ...}).  
-  * @param obj2, ({key1: value1, key2: value2, ...}).
-  * @return 'boolean'.
-  */
+ *
+ * @name objsValueComparition
+ *
+ * @param obj1, ({key1: value1, key2: value2, ...}).
+ * @param obj2, ({key1: value1, key2: value2, ...}).
+ * @return 'boolean'.
+ */
 
 function objsValueComparition(obj1, obj2) {
   try {
     objValidation(obj1);
     objValidation(obj2);
 
-    const keysArr1 = Object.keys(obj1);
-    const keysArr2 = Object.keys(obj2);
+    const keysArr1 = getObjKeysName(obj1)
+    const keysArr2 = getObjKeysName(obj2)
 
     for (let i = 0; i < keysArr1.length; i++) {
       const keyFromArr2 = keysArr2.find(item => item === keysArr1[i])
@@ -109,7 +117,7 @@ function objsValueComparition(obj1, obj2) {
       const value2 = obj2[keyFromArr2];
       if (typeof value1 !== typeof value2 || value1 !== value2) {
         return false;
-      }      
+      }
     }
 
     return true;
@@ -119,19 +127,19 @@ function objsValueComparition(obj1, obj2) {
 }
 
 /** function objComparition compare two objects for equality
-  *
-  * @name objComparition
-  *
-  * @param obj1, ({key1: value1, key2: value2, ...}).
-  * @param obj2, ({key1: value1, key2: value2, ...}).
-  * @return 'boolean'.
-  */
+ *
+ * @name objComparition
+ *
+ * @param obj1, ({key1: value1, key2: value2, ...}).
+ * @param obj2, ({key1: value1, key2: value2, ...}).
+ * @return 'boolean'.
+ */
 
 function objComparition(obj1, obj2) {
   try {
     objValidation(obj1);
-    objValidation(obj2);   
-    
+    objValidation(obj2);
+
     const length1 = getObjSize(obj1);
     const length2 = getObjSize(obj2);
 
@@ -140,43 +148,47 @@ function objComparition(obj1, obj2) {
 
     if (length1 !== length2 || !keysName || !keysValue ) {
       return false;
-    }      
-    
+    }
+
     return true;
   } catch (error) {
     console.log('Error from objComparition function :', error.message);
   }
-   
+
 }
 // method getObjSize start test
 it('method getObjSize positive', () => {
-
   expect(typeof getObjSize(obj1)).toBe('number');
 });
 
-it('method getObjSize negative', () => {
-
-  expect(getObjSize({})).toBe('Object is empty');
+// method getObjKeysName start test
+it('method getObjKeysName positive', () => {
+  expect(getObjKeysName(obj1) instanceof Array).toBe(true);
 });
-// method getObjSize end test
 
+// method objValidation start test
+it('method objValidation positive', () => {
+  expect(objValidation(obj1)).toBe(true);
+});
 
+it('method objValidation negative', () => {
+  expect(() => objValidation(5)).toThrow('Type of input parameter is not an object')
+});
+
+// method compareObjKeys start test
 it('method compareObjKeys positive', () => {
-
-  expect(typeof compareObjKeys(obj1)).toBe('boolean');
+  expect(typeof compareObjKeys(obj1, obj2)).toBe('boolean')
 });
 
-it('method compareObjKeys negative', () => {
-
-  expect(compareObjKeys({})).toBe('Object is empty');
+// method objsValueComparition start test
+it('method objsValueComparition positive', () => {
+  expect(typeof objsValueComparition(obj1, obj2)).toBe('boolean')
 });
 
-it('method getObjSize positive', () => {
-
-  expect(typeof getObjSize(obj1)).toBe('number');
+// method objComparition start test
+it('method objComparition positive', () => {
+  expect(typeof objComparition(obj1, obj2)).toBe('boolean')
 });
 
-it('method getObjSize negative', () => {
 
-  expect(getObjSize({})).toBe('Object is empty');
-});
+
