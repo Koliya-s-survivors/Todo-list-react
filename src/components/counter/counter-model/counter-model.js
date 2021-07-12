@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class CounterModel extends Component {
   state = {
-    counter: 0,
+    counter: 1,
   };
 
   increment = () => {
@@ -17,13 +17,13 @@ export default class CounterModel extends Component {
 
   render() {
     return(
-      <>
+      <>        
         {this.props.children({
           counter: this.state.counter,
           increment: this.increment,
           decrement: this.decrement,
         }
-        )}
+        )}       
       </>
     )
   }
