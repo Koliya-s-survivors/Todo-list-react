@@ -19,7 +19,7 @@ var obj2 = {
  * @name getObjKeysName
  *
  * @param obj, ({key1: value1, key2: value2, ...}).  *
- * @return 'Array'.
+ * @return Array
  */
 
 function getObjKeysName (obj) {
@@ -31,11 +31,11 @@ function getObjKeysName (obj) {
  * @name objValidation
  *
  * @param obj, ({key1: value1, key2: value2, ...}).  *
- * @return 'boolean'.
+ * @return boolean
  */
 
 function objValidation(obj) {
-  if (!(obj instanceof Object)) {
+  if (!(obj instanceof Object) || obj instanceof Array) {
     throw new Error('Type of input parameter is not an object');
   }
 
@@ -47,7 +47,7 @@ function objValidation(obj) {
  * @name getObjSize
  *
  * @param obj, ({key1: value1, key2: value2, ...}).
- * @return  'number'.
+ * @return  number||Error
  */
 
 function getObjSize(obj) {
@@ -60,7 +60,7 @@ function getObjSize(obj) {
   } catch (error) {
     console.log('Error from getObjSize function :', error.message);
   }
-};
+}
 
 /** function compareObjKeys perform object keys comparition
  *
@@ -68,7 +68,7 @@ function getObjSize(obj) {
  *
  * @param obj1, ({key1: value1, key2: value2, ...}).
  * @param obj2, ({key1: value1, key2: value2, ...}).
- * @return  'boolean'.
+ * @return  boolean
  */
 
 function compareObjKeys(obj1, obj2) {
@@ -82,7 +82,7 @@ function compareObjKeys(obj1, obj2) {
     for (let i = 0; i < keysArr1.length; i++) {
       const keyFromArr2 = keysArr2.find(item => item === keysArr1[i])
 
-      if (keyFromArr2 === -1) {
+      if (keyFromArr2 === undefined) {
         return false;
       }
     }
@@ -156,39 +156,15 @@ function objComparition(obj1, obj2) {
   }
 
 }
-// method getObjSize start test
-it('method getObjSize positive', () => {
-  expect(typeof getObjSize(obj1)).toBe('number');
-});
 
-// method getObjKeysName start test
-it('method getObjKeysName positive', () => {
-  expect(getObjKeysName(obj1) instanceof Array).toBe(true);
-});
-
-// method objValidation start test
-it('method objValidation positive', () => {
-  expect(objValidation(obj1)).toBe(true);
-});
-
-it('method objValidation negative', () => {
-  expect(() => objValidation(5)).toThrow('Type of input parameter is not an object')
-});
-
-// method compareObjKeys start test
-it('method compareObjKeys positive', () => {
-  expect(typeof compareObjKeys(obj1, obj2)).toBe('boolean')
-});
-
-// method objsValueComparition start test
-it('method objsValueComparition positive', () => {
-  expect(typeof objsValueComparition(obj1, obj2)).toBe('boolean')
-});
-
-// method objComparition start test
-it('method objComparition positive', () => {
-  expect(typeof objComparition(obj1, obj2)).toBe('boolean')
-});
+export {
+  getObjKeysName,
+  objValidation,
+  getObjSize,
+  compareObjKeys,
+  objsValueComparition,
+  objComparition
+};
 
 
 
