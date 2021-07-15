@@ -21,9 +21,9 @@ class Component {
   render() {
     return "<div></div>"
   }
-  test() {
-    this.render();
-  }
+  // test() {
+  //   this.render();
+  // }
 }
 class SomeComponent extends Component {
   render() {

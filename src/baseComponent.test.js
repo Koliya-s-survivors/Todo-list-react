@@ -11,12 +11,13 @@ describe('Feature React class component ', () => {
     })
     describe('Render live circle when should be called', () => {
       it('positive scenario', () => {
-        const result = 'a';
+        const result = 'a';   
+        const spy = jest.spyOn(Component.prototype, 'render');
         const instanceComponent = new Component({ a: 'a' });
-        
-        const spy = jest.spyOn(instanceComponent,'render')
-        instanceComponent.test()
-        expect(spy).toHaveBeenCalled()
+          
+        // const spy = jest.spyOn(instanceComponent,'render');
+        //  instanceComponent.test();        
+        expect(spy).toHaveBeenCalled();
       })
     })
   })
