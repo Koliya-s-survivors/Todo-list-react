@@ -23,15 +23,3 @@
    5.3 React.Fragment short and full entry.(Why is it needed).
 
    5.4 Rendering child to parent.
-   
-6. Props received from outside.
-   
-   (Props it is a mean of transmitting of the data from parent element to child element)
-   
-   6.1 State is situated inside class component.
-   
-   6.2 Props can not be changed.
-   
-   6.3 State can be changed.
-   
-   6.4 key input in cycle.
