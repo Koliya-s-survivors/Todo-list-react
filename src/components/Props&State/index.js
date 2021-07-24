@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 class Parent extends Component {
   render() {
     return (
-      <div>Parent</div>       
+      <>
+      <div>Parent</div>
+      <div>{this.props.children}</div>
+      </>   
     )
   }
 }

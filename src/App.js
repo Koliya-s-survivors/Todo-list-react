@@ -5,10 +5,9 @@ import { Parent, Child } from './components/Props&State'
 class App extends React.Component {
   render() {
     return (
-      <>
-      <Parent/>
-      <Child/>
-      </>
+      <Parent>
+        <Child />
+      </Parent>
     )
   }
 }
