@@ -5,7 +5,8 @@ class Parent extends Component {
     return (
       <>
       <div>Parent</div>
-      <div>{this.props.children}</div>
+      <div>{this.props.name}</div>
+        <div>{this.props.children}</div>
       </>   
     )
   }
@@ -14,10 +15,14 @@ class Parent extends Component {
 class Child extends Component {
   render() {
     return (
-      <div>Child</div>
+      <>
+        <div>Child</div>
+        <div>{this.props.name}</div>
+      </>
     )
   }
 }
+
 
 
 export { Parent, Child };
