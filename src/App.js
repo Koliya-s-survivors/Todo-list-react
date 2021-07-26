@@ -1,46 +1,43 @@
 import React from 'react';
 import './App.css';
-// components
-import {
-  Child,
-  Parent
-} from '../src/components/lifeTimeHooks';
-// const Obj = module.require('../src/components/lifeTimeHooks');
-// const Parent = Obj.Parent;
-// const Child = Obj.Child;
-// array data
-const data = [
+import {Parent, Child} from './components/props';
+
+const myProps = [
   {
-    firstName: 'Aleksey',
-    lastName: 'Salkov',
-    age: 38,
-    nationality: 'Ukrainian'
-  },
-  {
-    firstName: 'Sergey',
-    lastName: 'Krasnitskiy',
-    age: 36,
-    nationality: 'Ukrainian'
-  },
-  {
-    firstName: 'Hamed',
+    name: 'Hamed',
     lastName: 'Fouladi',
-    age: 35,
-    nationality: 'Ukrainian'
-  }
-];
+    age: 17
+  },
+  {
+    name: 'Hamed1',
+    lastName: 'Fouladi1',
+    age: 18
+  },
+  {
+    name: 'Hamed2',
+    lastName: 'Fouladi2',
+    age: 19
+  },
+  {
+    name: 'Hamed3',
+    lastName: 'Fouladi3',
+    age: 20
+  },
+]
 
 class App extends React.Component {
   render() {
     return (
-      // Transmitting data array over props of the parent element
-      <Parent data={data}>
-        <Child/>
-        <div>Good</div>
-      </Parent>
+      <>
+        <Parent myProps={myProps}>
+          {(myProps) => {
+            return myProps.map(({ name, lastName, age }) =>
+              <Child name={name} lastName={lastName} age={age}/>)
+          }}
+        </Parent>
+      </>
     )
   }
 }
 
 export {App};
-// export default App;//
