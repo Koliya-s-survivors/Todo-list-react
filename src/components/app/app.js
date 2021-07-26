@@ -1,14 +1,12 @@
 import { Component } from 'react';
 // components
-import Parent from '../parent/';
-import Child from '../child';
+import Counter from '../counter';
 
 export default class App extends Component {
   render() {
     return (
       <>
-        <Parent/>
-        <Child />
+        <Counter />
       </>
     )
   }
