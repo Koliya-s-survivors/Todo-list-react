@@ -8,21 +8,35 @@ class Counter extends Component {
     counter: 0,
   }
 
-  incrementCounter = () => {
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    console.log(` nextContext: `, nextContext);
+    if ((nextState.counter %2) === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  incrementCounter = (data) => {
     const newCounter = this.state.counter + 1;
+    // todo ...will be logic about positive
     this.setState({counter: newCounter})
+    console.log(` data: `, data);
   }
 
   decrementCounter = () => {
     const newCounter = this.state.counter - 1;
-    this.setState({counter: newCounter})
+    if (newCounter >= 0) {
+      this.setState({counter: newCounter})
+    }
+
   }
 
   render() {
     return (
       <div>
         <CounterView counter={this.state.counter}/>
-        <CounterControl incrementCounter={this.incrementCounter} decrementCounter={this.decrementCounter}/>
+        <CounterControl incrementCounter={this.incrementCounter}
+                        decrementCounter={this.decrementCounter}/>
       </div>
     );
   }
